@@ -9,6 +9,8 @@ Here you can find a sample summerizer: https://github.com/summanlp/textrank
 
 # Project details
 
+The detailed overleaf document could be found from here: https://www.overleaf.com/8834188557dskgqvmsthhk
+
 We shall consider structured document containing a title, abstract and a set of subsections. We would like to build a text summarizer such that it tracks important keywords in the document. For this purpose, the first step is identify these keywords. 
 
 ## Stage 1
