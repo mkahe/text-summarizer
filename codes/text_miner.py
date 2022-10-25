@@ -54,7 +54,7 @@ def sent_tokenize(text):
             # get the text between <h1> and </h1>
             text = match.group(1)
             # set tag to heading
-            tag = 'h1'
+            tag = 'heading'
             # create a list of Sentence objects
             sentence_objects = create_sentence(text, tag)
             # add the list of Sentence objects to sentences
@@ -62,7 +62,7 @@ def sent_tokenize(text):
         # match h2
         elif match.group(2):
             text = match.group(2)
-            tag = 'h2'
+            tag = 'heading 2'
             sentence_objects = create_sentence(text, tag)
             sentences.extend(sentence_objects)
 
@@ -80,7 +80,7 @@ def sent_tokenize(text):
 
     # print all the sentences
     for sentence in sentences:
-        print("sentence: ", sentence.text.strip())
+        print("structure: %s, Text: %s" %( sentence.tag, sentence.text.strip()))
 
     return sentences
     
