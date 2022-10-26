@@ -121,5 +121,4 @@ These parameters depend on the text you have at hand, and it is essential to cho
 
 output: 
 
-
 ``` Keywords: Keywords: [('household food security', 7.711414565826329), ('indigenous groups living', 7.4), ('national forest programmes', 7.249539170506913), ('wood forest products', 6.844777265745007)... ```
