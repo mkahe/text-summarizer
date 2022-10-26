@@ -82,11 +82,11 @@ Design a simple GUI that allows the user to input a text or a link to a document
 
 ## How it works : 
 
-    1.Candidate selection: Here, we extract all possible words, phrases, terms or concepts (depending on the task) that can potentially be keywords.
+1.Candidate selection: Here, we extract all possible words, phrases, terms or concepts (depending on the task) that can potentially be keywords.
 
-    2.Properties calculation: For each candidate, we need to calculate properties that indicate that it may be a keyword. For example, a candidate appearing in the title of a book is a likely keyword.
+2.Properties calculation: For each candidate, we need to calculate properties that indicate that it may be a keyword. For example, a candidate appearing in the title of a book is a likely keyword.
 
-    3.Scoring and selecting keywords: All candidates can be scored by either combining the properties into a formula, or using a machine learning technique to determine probability of a candidate being a keyword. A score or probability threshold, or a limit on the number of keywords is then used to select the final set of keywords..
+3.Scoring and selecting keywords: All candidates can be scored by either combining the properties into a formula, or using a machine learning technique to determine probability of a candidate being a keyword. A score or probability threshold, or a limit on the number of keywords is then used to select the final set of keywords..
 
 ##  Setting up RAKE
 
@@ -103,9 +103,11 @@ First, let us initialize RAKE with a path to a stop words list and set some para
 ``` rake_object = rake.Rake("SmartStoplist.txt", 5, 3, 4) ```
 
 
-    Each word has at least 5 characters
-    Each phrase has at most 3 words
-    Each keyword appears in the text at least 4 times
+Each word has at least 5 characters
+
+Each phrase has at most 3 words
+
+Each keyword appears in the text at least 4 times
 
 These parameters depend on the text you have at hand, and it is essential to choose these parameters carefully (try running this example with the default parameters and you will understand).
 
