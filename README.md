@@ -70,3 +70,49 @@ Now we would like to compare the above summarizers and those in 3), 5) and 7) on
 
 ## Stage 9
 Design a simple GUI that allows the user to input a text or a link to a document to be summarized and output the summarizer according to 3), algorithms implemented in 7)
+
+## Rake Library
+
+## How it works : 
+
+    1.Candidate selection: Here, we extract all possible words, phrases, terms or concepts (depending on the task) that can potentially be keywords.
+
+    2.Properties calculation: For each candidate, we need to calculate properties that indicate that it may be a keyword. For example, a candidate appearing in the title of a book is a likely keyword.
+
+    3.Scoring and selecting keywords: All candidates can be scored by either combining the properties into a formula, or using a machine learning technique to determine probability of a candidate being a keyword. A score or probability threshold, or a limit on the number of keywords is then used to select the final set of keywords..
+
+##  Setting up RAKE
+
+``` python setup.py install ```
+
+Then, following the instructions in _raketutorial.py, import RAKE, and import the operator for the “Behind the scenes” part of this tutorial:
+
+``` import rake ```
+
+``` import operator ```
+
+First, let us initialize RAKE with a path to a stop words list and set some parameters:
+
+``` rake_object = rake.Rake("SmartStoplist.txt", 5, 3, 4) ```
+
+
+    Each word has at least 5 characters
+    Each phrase has at most 3 words
+    Each keyword appears in the text at least 4 times
+
+These parameters depend on the text you have at hand, and it is essential to choose these parameters carefully (try running this example with the default parameters and you will understand).
+
+##  Usage
+
+``` sample_file = open("data/docs/fao_test/w2167e.txt", 'r') ```
+
+``` text = sample_file.read()```
+
+``` keywords = rake_object.run(text)```
+
+``` print "Keywords:", keywords ```
+
+output: 
+
+
+``` Keywords: Keywords: [('household food security', 7.711414565826329), ('indigenous groups living', 7.4), ('national forest programmes', 7.249539170506913), ('wood forest products', 6.844777265745007)... ```
