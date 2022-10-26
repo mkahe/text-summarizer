@@ -66,7 +66,14 @@ We would like to make the choice of keywords not based on histogram frequency bu
 It is also suggested to explore alternative implementations with larger number of summarization approaches implemented - https://github.com/miso-belica/sumy. Show how each of the implemented summarizer behaves when inputted with the same document you used in previous case.
 
 ## Stage 8
-Now we would like to compare the above summarizers and those in 3), 5) and 7) on a new dataset constructed as follows. First select an Elsevier journal of your own and select 10 papers highly ranked in the journal according to citation index (The journal papers should be well structured to contain Abstract, Introduction and Conclusion). For each of the ten papers, consider the introduction as the main document to seek to apply summarizer, and consider the Abstract and Conclusion as two golden summary of the document that you can use for assessment using ROUGE-1 and ROUGE-2 evaluation. Report in a table the evaluation score of each summarizer. 
+Now we would like to compare the above summarizers and those in 3), 5) and 7) on a new dataset constructed as follows: 
+
+- First select an Elsevier journal of your own and select 10 papers highly ranked in the journal according to citation index (The journal papers should be well structured to contain Abstract, Introduction and Conclusion). 
+
+- For each of the ten papers: 
+    1. Consider the __introduction__ as the main document to seek to apply summarizer.
+    2. consider the Abstract and Conclusion as two golden summary of the document that you can use for assessment using ROUGE-1 and ROUGE-2 evaluation. 
+    3. Report in a table the evaluation score of each summarizer. 
 
 ## Stage 9
 Design a simple GUI that allows the user to input a text or a link to a document to be summarized and output the summarizer according to 3), algorithms implemented in 7)
