@@ -53,7 +53,7 @@ Next, instead of recording only the 10 sentences with highest S<sub>weight</sub>
     
     Round 3: `CS3 = Minimum(Sim(CS1, Si) + Sim(CS2, Si))` for i = 1 to j (j is the length of unselected sentences)
 
-    Round 4: `CS4 = Max(Sim(CS1, Si) + Sim(CS2, Si) + Sim(CS3, Si))` for i = 1 to j (j is the length of unselected sentences)
+    Round 4: `CS4 = Minimum(Sim(CS1, Si) + Sim(CS2, Si) + Sim(CS3, Si))` for i = 1 to j (j is the length of unselected sentences)
 
     Final Round: Once CS set gets to 10 sentences it is done!
 
