@@ -41,21 +41,21 @@ Next, instead of recording only the 10 sentences with highest S<sub>weight</sub>
 
 - Second, we shall assume that S<sub>1</sub> is always included in the summarizer, we shall then attempt to find the other sentences among S<sub>2</sub> till S<sub>20</sub> to be included into the summarizer.
 
-- In the third phase, calculate the __sentence-to-sentence similarity__ `Sim(S1,Si)` for *i= 1 to 20*, the Sentence S<sub>j</sub> that yields the minimum similarity with S<sub>1</sub> will therefore be included in the summarizer.
+- In the third phase, calculate the __sentence-to-sentence similarity__ `Sim(S1,Si)` for *i= 1 to 20*, the Sentence S<sub>j</sub> that yields **the minimum similarity** with S<sub>1</sub> will therefore be included in the summarizer.
 
-- Next, for each of the remaining sentences S<sub>k</sub> (with k different from 1 and j), we calculate the sentence similarity with S<sub>j</sub>. Therefore the sentence S<sub>p</sub> that yields minimum value of `Sim (Sp, S1) + Sim(Sp, Sj)` will be included in the summarizer. 
+- Next, for each of the remaining sentences S<sub>k</sub> (with k different from 1 and j), we calculate the sentence similarity with S<sub>j</sub>. Therefore the sentence S<sub>p</sub> that yields **minimum value of** `Sim (Sp, S1) + Sim(Sp, Sj)` will be included in the summarizer. 
 
 - In the next phase, we should select a sentence S<sub>l</sub> (l different from 1, j and k) so that  `Sim(Sl, S1) + Sim(Sl, Sj) + Sim(Sl, Sp)`, etc. You then stop once you reached 10 sentences included in the summarizer. Suggest a script that includes this process, and illustrate its functioning in the example you chosen in 1). In other words you can imagine that the forth phase is like a recursive function, in which each time you add another sentence to the candidate summerised sentences and for the next candidate you should again calculate a summation of each similarities. So, we would have:   
 
-    Round 1: First candidate sentence is S<sub>1</sub>. So, we have SC1 as summerized sentence
+    Round 1: First candidate sentence is S<sub>1</sub>. So, we have CS1 as summerized sentence (CS: Candidate Summarized Sentence).
     
-    Round 2: `SC2 = Max(SC1, Si)` for i = 1, j (j is the length of unselected sentences)
+    Round 2: `CS2 = Minimum(CS1, Si)` for i = 1, j (j is the length of unselected sentences)
     
-    Round 3: `SC3 = Max(Sim(SC1, Si) + Sim(SC2, Si))` for i = 1 to j (j is the length of unselected sentences)
+    Round 3: `CS3 = Minimum(Sim(CS1, Si) + Sim(CS2, Si))` for i = 1 to j (j is the length of unselected sentences)
 
-    Round 4: `SC4 = Max(Sim(SC1, Si) + Sim(SC2, Si) + Sim(SC3, Si))` for i = 1 to j (j is the length of unselected sentences)
+    Round 4: `CS4 = Minimum(Sim(CS1, Si) + Sim(CS2, Si) + Sim(CS3, Si))` for i = 1 to j (j is the length of unselected sentences)
 
-    Final Round: Once SC set gets to 10 sentences it is done!
+    Final Round: Once CS set gets to 10 sentences it is done!
 
     **Note**: the quantity `Sim(Sp, S1)` is already calculated in previous step).
 
