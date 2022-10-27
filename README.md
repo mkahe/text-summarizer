@@ -80,47 +80,36 @@ Design a simple GUI that allows the user to input a text or a link to a document
 
 ## Rake Library
 
-## How it works : 
+A Python implementation of the Rapid Automatic Keyword Extraction (RAKE) algorithm as described in: Rose, S., Engel, D., Cramer, N., & Cowley, W. (2010). Automatic Keyword Extraction from Individual Documents. In M. W. Berry & J. Kogan (Eds.), Text Mining: Theory and Applications: John Wiley & Sons.
 
-1.Candidate selection: Here, we extract all possible words, phrases, terms or concepts (depending on the task) that can potentially be keywords.
+## Instaling Rake
 
-2.Properties calculation: For each candidate, we need to calculate properties that indicate that it may be a keyword. For example, a candidate appearing in the title of a book is a likely keyword.
+` pip install rake-nltk `
 
-3.Scoring and selecting keywords: All candidates can be scored by either combining the properties into a formula, or using a machine learning technique to determine probability of a candidate being a keyword. A score or probability threshold, or a limit on the number of keywords is then used to select the final set of keywords..
+## Usage
 
-##  Setting up RAKE
+``` 
+r = Rake()
+text="Feature extraction is not that complex. There are many algorithms available that can help you with feature extraction. Rapid Automatic Key Word Extraction is one of those"
+r.extract_keywords_from_text(text)
+r.get_ranked_phrases()
+#outout
+['rapid automatic key word extraction',
+ 'many algorithms available',
+ 'feature extraction',
+ 'one',
+ 'help',
+ 'complex']
 
-``` python setup.py install ```
+```
 
-Then, following the instructions in _raketutorial.py, import RAKE, and import the operator for the “Behind the scenes” part of this tutorial:
+## Special Case
 
-``` import rake ```
+```
+r.get_ranked_phrases_with_scores()
 
-``` import operator ```
+#output
 
-First, let us initialize RAKE with a path to a stop words list and set some parameters:
+[(23.5, 'rapid automatic key word extraction'),
 
-``` rake_object = rake.Rake("SmartStoplist.txt", 5, 3, 4) ```
-
-
-Each word has at least 5 characters
-
-Each phrase has at most 3 words
-
-Each keyword appears in the text at least 4 times
-
-These parameters depend on the text you have at hand, and it is essential to choose these parameters carefully (try running this example with the default parameters and you will understand).
-
-##  Usage
-
-``` sample_file = open("data/docs/fao_test/w2167e.txt", 'r') ```
-
-``` text = sample_file.read()```
-
-``` keywords = rake_object.run(text)```
-
-``` print "Keywords:", keywords ```
-
-output: 
-
-``` Keywords: Keywords: [('household food security', 7.711414565826329), ('indigenous groups living', 7.4), ('national forest programmes', 7.249539170506913), ('wood forest products', 6.844777265745007)... ```
+```
