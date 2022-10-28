@@ -78,16 +78,14 @@ Now we would like to compare the above summarizers and those in 3), 5) and 7) on
 ## Stage 9
 Design a simple GUI that allows the user to input a text or a link to a document to be summarized and output the summarizer according to 3), algorithms implemented in 7)
 
-## Rake Library
+# Rake Library
 
 A Python implementation of the Rapid Automatic Keyword Extraction (RAKE) algorithm as described in: Rose, S., Engel, D., Cramer, N., & Cowley, W. (2010). Automatic Keyword Extraction from Individual Documents. In M. W. Berry & J. Kogan (Eds.), Text Mining: Theory and Applications: John Wiley & Sons.
 
 ## Instaling Rake
-
 ` pip install rake-nltk `
 
 ## Usage
-
 ``` 
 r = Rake()
 text="Feature extraction is not that complex. There are many algorithms available that can help you with feature extraction. Rapid Automatic Key Word Extraction is one of those"
@@ -113,3 +111,8 @@ r.get_ranked_phrases_with_scores()
 [(23.5, 'rapid automatic key word extraction'),
 
 ```
+
+# Alternative Solutions for 'Redundancy Problem'
+## Maximal Marginal Relevance (MMR)
+MMR tries to reduce the redundancy of results while at the same time maintaining query relevance of results for already ranked documents/phrases etc.
+
