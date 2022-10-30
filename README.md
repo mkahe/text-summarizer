@@ -116,3 +116,9 @@ r.get_ranked_phrases_with_scores()
 ## Maximal Marginal Relevance (MMR)
 MMR tries to reduce the redundancy of results while at the same time maintaining query relevance of results for already ranked documents/phrases etc.
 
+
+# References
+[evaluation metrics in NLP](https://towardsdatascience.com/the-ultimate-performance-metric-in-nlp-111df6c64460)
+
+[Histograms in NLP](https://www.analyticsvidhya.com/blog/2021/09/what-are-n-grams-and-how-to-implement-them-in-python/)
+
