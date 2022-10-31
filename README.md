@@ -92,7 +92,7 @@ A Python implementation of the Rapid Automatic Keyword Extraction (RAKE) algorit
 r = Rake()
 text="Feature extraction is not that complex. There are many algorithms available that can help you with feature extraction. Rapid Automatic Key Word Extraction is one of those"
 r.extract_keywords_from_text(text)
-r.get_ranked_phrases()
+print(r.get_ranked_phrases())
 #outout
 ['rapid automatic key word extraction',
  'many algorithms available',
@@ -106,7 +106,7 @@ r.get_ranked_phrases()
 ## Special Case
 
 ```
-r.get_ranked_phrases_with_scores()
+print(r.get_ranked_phrases_with_scores())
 
 #output
 
