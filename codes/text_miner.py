@@ -211,6 +211,7 @@ def get_summary(sentences):
     for i, j in summary:
         print("sentence: ", j, "TEXT: ", i.text)
 
+    return summary
 
 
 
