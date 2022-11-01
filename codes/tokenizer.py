@@ -2,7 +2,7 @@ from unittest import result
 import nltk
 import sklearn
 import re
-# nltk.download ()
+nltk.download ('omw-1.4')
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -65,12 +65,12 @@ print(output)
 # for sent in output:
 res = TfidfVectorizor(output)
 # print(res.get_feature_names_out())
-# print(res[0])
+print(res)
 
-score_1 = 0
-for i in res[0]:
-    print(i.data)
-    score_1 += i
+# score_1 = 0
+# for i in res[0]:
+#     print(i.data)
+#     score_1 += i
     
 # print('Score sentence 1 is %s' %score_1)
 

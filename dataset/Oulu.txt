@@ -4,8 +4,8 @@
 <p>
     located at the mouth of the Oulu River of the Perä Sea on the coast in the province of North Ostrobothnia . Founded
     in 1605, Oulu is the oldest city in Northern Finland and in terms of population the fifth largest city and the
-    fourth largest urban area .The population of Oulu was 209,934 inhabitants June 30, 2022 and the area 3,817.69 square
-    kilometers, of which 2,972, 45 is land, 80.32 is inland water and the remaining 764.92 square kilometers is sea.
+    fourth largest urban area .The population of Oulu was 209,934 inhabitants June 30, 2022 and the area 3,817. square
+    kilometers, of which 2,972, 45 is land, 80. is inland water and the remaining 764.92 square kilometers is sea.
     Oulu is Finland's largest coastal municipality by area.
 
     Oulu is the administrative and commercial center of its region. Oulu's neighboring municipalities are Hailuoto , Ii
@@ -27,7 +27,7 @@
     refer to the word uula, known in the dialects of Pohjois-Savo , which means a channel or riverbed. Very often in the
     Finnish language tradition, both the lake and the flowing river are named in the same way. Thus, also after
     Oulujärvi , the lower river was named Oulujoki and the market place born at the mouth of the river was named Oulu.
-    [9] The name must have been given in the 10th–12th centuries at the latest. The oldest historical records of the
+    The name must have been given in the 10th–12th centuries at the latest. The oldest historical records of the
     name are from 1327–1328 Vlu, Wlw and Wlvthraesk, but certainly the name is perhaps several hundred years older than
     this.
 </p>
