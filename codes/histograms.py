@@ -36,15 +36,11 @@ df = ["Oulu, a Finnish city and the provincial capital of North Ostrobothnia."
 words = basic_clean(' '.join(df))
 print(words)
 
-print('panda series:')
-print(pd.Series(nltk.ngrams(words, 1)))
-print('----------------')
-
 unigrams_series = (pd.Series(nltk.ngrams(words, 1)).value_counts())[:20]
 bigrams_series = (pd.Series(nltk.ngrams(words, 2)).value_counts())[:20]
 
 unigrams_series.sort_values().plot.barh(color='blue', width=.9, figsize=(12, 8))
-plt.title('20 Most Frequently Occuring Bigrams')
-plt.ylabel('Bigram')
+plt.title('Most Frequently Occuring Uigrams')
+plt.ylabel('Unigram')
 plt.xlabel('# of Occurances')
 plt.show()
