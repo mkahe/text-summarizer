@@ -7,7 +7,7 @@ This document will be updated later.
 # Sample projects
 Here you can find a sample summerizer: 
 1. Summa Textrank: https://github.com/summanlp/textrank
-2. Summy: https://github.com/miso-belica/sumy
+2. Summy: https://github.com/miso-belica/sumypip3 
 
 # Project details
 

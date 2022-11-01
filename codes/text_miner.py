@@ -29,7 +29,8 @@ def create_sentence(text, tag):
     # create a list of Sentence objects
     sentence_objects = []
     for sentence in sentences:
-        sentence_objects.append(Sentence(sentence, tag))
+        if sentence:
+            sentence_objects.append(Sentence(sentence, tag))
     return sentence_objects
 
 # define sent_tokenize function
@@ -87,6 +88,6 @@ def sent_tokenize(text):
 
 if __name__ == "__main__":
     # read a text file
-    text = read_file('dataset/finland.html')
+    text = read_file('dataset/finland.txt')
     # split text into sentences
     sentences = split_text(text)
