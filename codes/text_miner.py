@@ -8,12 +8,13 @@ import numpy as np
 from transformers import AutoTokenizer, AutoModel
 import torch
 from sklearn.metrics.pairwise import cosine_similarity
+from rouge import Rouge
 
 
 named_entity_rec = spacy.load("en_core_web_sm")
 
 class Sentence:
-    def __init__(self, text, tag):
+    def __init__(self, text, tag, order):
         self.text = text
         # tag: heading, subheading, paragraph
         # polish the text to remove special characters
@@ -24,6 +25,7 @@ class Sentence:
         self.POS = 0
         self.weight = 0
         self.named_entities = []
+        self.order = order
         self.add_named_entity()
 
 
@@ -61,9 +63,10 @@ def create_sentence(text, tag):
     sentences = text.split('.')
     # create a list of Sentence objects
     sentence_objects = []
-    for sentence in sentences:
+    for i in range(len(sentences)):
+        sentence = sentences[i]
         if sentence:
-            sentence_objects.append(Sentence(sentence, tag))
+            sentence_objects.append(Sentence(sentence, tag, i))
     return sentence_objects
 
 # define sent_tokenize function
@@ -119,6 +122,13 @@ def sent_tokenize(text):
     return sentences
 
 
+def remove_stopwords(sentence):
+    words = word_tokenize(sentence)
+    words = [word for word in words if word not in set(stopwords.words('english'))]
+    sentence = ' '.join(words)
+    return sentence
+
+
 def lemmatizer(sentences):
     # create lemmatize object
     lemmmatizer = WordNetLemmatizer()
@@ -130,6 +140,7 @@ def lemmatizer(sentences):
             word.lower()) for word in words if word not in set(stopwords.words('english'))]
         sentences[i] = ' '.join(words)
     return sentences
+
 
 # the return list order is the same as the input list
 def get_score_based_on_tfidf(sentence):
@@ -208,18 +219,22 @@ def get_summary(sentences):
     for sen in sentences[:20]:
         print(sen.text)
 
+    summary.sort(key=lambda x: x[0].order)
+
     for i, j in summary:
         print("sentence: ", j, "TEXT: ", i.text)
 
     return summary
 
 
+def get_rouge_score(candidate, reference):
+    rouge = Rouge()
+    scores = rouge.get_scores(candidate, reference)
+    return scores
 
-    
-
-if __name__ == "__main__":
+def main():
     # read a text file
-    text = read_file('dataset/finland.txt')
+    text = read_file('dataset/Lapland.txt')
     # split text into sentences
     sentences = split_text(text)
     print(sentences[1].named_entities)
@@ -235,6 +250,24 @@ if __name__ == "__main__":
     for i in range(len(sentences)):
         sentences[i].weight = sentence_tfidf[i] + 2 * ne_score_tfidf[i]
     
-    get_summary(sentences)
+    # get_summary(sentences)
 
+    sen1 = """ The area of Lapland was split between two counties of the Swedish Realm from 1634 to 1809. The northern and western
+    areas were part of Västerbotten County, while the southern areas were part of Ostrobothnia
+    County. The northern and western areas were transferred in 1809 to Oulu County, which
+    became Oulu Province. Under the royalist constitution of Finland during the first half of 1918, Lapland was to
+    become a Grand Principality and part of the inheritance of the proposed king of Finland. Lapland Province was
+    separated from Oulu Province in 1938."""
+
+    sen1_sw = remove_stopwords(sen1)
+
+    sen2 = "The area of the Lapland region is 100 367 km which consists of 92 667 km of dry land 6 316 km fresh water and 1 383 km of sea water. The very first snowflakes fall to the ground in late August or early September over the higher peaks. After Finland made a separate peace with the Soviet Union in 1944 the Soviet Union demanded that Finland expel the German army from its soil "
+    sen2_sw = remove_stopwords(sen2)
+
+    print(get_rouge_score(sen1, sen2))
+
+    print(get_rouge_score(sen1_sw, sen2_sw))
     
+
+if __name__ == "__main__":
+    main()
