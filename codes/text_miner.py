@@ -49,10 +49,22 @@ def read_file(file_name):
     return text
 
 
-# split text into sentences
-def split_text(text):
+# split text into sentences``
+def split_html_text(text):
     # split text into sentences
     sentences = sent_tokenize(text)
+    return sentences
+
+
+def split_text(text):
+    pattern = re.compile(r'.*?\.', re.DOTALL)
+    matches = pattern.finditer(text)
+    sentences = []
+    for i in range(len(matches)):
+        match = matches[i]
+        text = match.group(1)
+        sentence_object = Sentence(text, None, 0)
+        sentences.append(sentence_object)
     return sentences
 
 
@@ -236,7 +248,7 @@ def main():
     # read a text file
     text = read_file('dataset/Lapland.txt')
     # split text into sentences
-    sentences = split_text(text)
+    sentences = split_html_text(text)
     print(sentences[1].named_entities)
     
     text_list = [i.text for i in sentences]
