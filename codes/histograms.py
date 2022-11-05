@@ -5,7 +5,7 @@ import unicodedata
 import nltk
 from nltk.corpus import stopwords
 # add appropriate words that will be ignored in the analysis
-ADDITIONAL_STOPWORDS = ['covfefe']
+ADDITIONAL_STOPWORDS = ['oulu']
 
 import matplotlib.pyplot as plt
 
