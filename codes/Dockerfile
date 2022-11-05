@@ -11,7 +11,7 @@ WORKDIR /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN python -m spacy download en_core_web_sm
-RUN python -m spacy download en-core-web-trf
+# RUN python -m spacy download en-core-web-trf
 
 
 # open the port 5002
