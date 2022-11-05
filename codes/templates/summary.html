@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Text Summary</title>
+        <h1 style="text-align: center;">Text Summary</h1>
+    </head>
+    <body>
+        <h1>Summary Table</h1>
+        <table>
+            <tr>
+                <td>
+                    <h3>Order</h3>
+                </td>
+                <td>
+                    <h3>Weight</h3>
+                </td>
+                <td>
+                    <h3>Summarized Text</h3>
+                </td>
+            </tr>
+            {% for s in summary %}
+                <tr>
+                    <td>
+                        <p>{{ s[0].order }}</p>
+                    </td>
+                    <td>
+                        <p>{{ "%.2f"|format(s[0].weight) }}</p>
+                    </td>
+                    <td>
+                        <p>{{ s[0].text }}</p>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+        <br><br>
+
+        <h1>Comparison Table</h1>
+        <table border=1 frame=void rules=rows>
+            <tr>
+                <td>
+                    <h3>ROUGE</h3>
+                </td>
+                <td>
+                    <h3>Percision</h3>
+                </td>
+                <td>
+                    <h3>Recall</h3>
+                </td>
+                <td>
+                    <h3>F1</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Rouge-1</p>
+                </td>
+                <td>
+                    <p>{{ "%.2f"|format(rouge_score['rouge-1']['p']) }}</p>
+                </td>
+                <td>
+                    <p>{{ "%.2f"|format(rouge_score['rouge-1']['r']) }}</p>
+                </td>
+                <td>
+                    <p>{{ "%.2f"|format(rouge_score['rouge-1']['f']) }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Rouge-2</p>
+                </td>
+                <td>
+                    <p>{{ "%.2f"|format(rouge_score['rouge-2']['p']) }}</p>
+                </td>
+                <td>
+                    <p>{{ "%.2f"|format(rouge_score['rouge-2']['r']) }}</p>
+                </td>
+                <td>
+                    <p>{{ "%.2f"|format(rouge_score['rouge-2']['f']) }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Rouge-L</p>
+                </td>
+                <td>
+                    <p>{{ "%.2f"|format(rouge_score['rouge-l']['p']) }}</p>
+                </td>
+                <td>
+                    <p>{{ "%.2f"|format(rouge_score['rouge-l']['r']) }}</p>
+                </td>
+                <td>
+                    <p>{{ "%.2f"|format(rouge_score['rouge-l']['f']) }}</p>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

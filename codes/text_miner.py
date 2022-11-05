@@ -228,13 +228,13 @@ def get_summary(sentences):
             scores_s1[j] += score[0][0]
         scores_s1[min_index] = 1000
 
-    for sen in sentences[:20]:
-        print(sen.text)
+    # for sen in sentences[:20]:
+    #     print(sen.text)
 
     summary.sort(key=lambda x: x[0].order)
 
-    for i, j in summary:
-        print("sentence: ", j, "TEXT: ", i.text)
+    # for i, j in summary:
+    #     print("sentence: ", j, "TEXT: ", i.text)
 
     return summary
 

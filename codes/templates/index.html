@@ -1,13 +1,31 @@
 <html>
     <head>
         <title>Text Summarizer</title>
+        <h1 style="text-align: center;">Text Summarizer</h1>
     </head>
     <body>
-        <span style="position: center;">
-            <h1>Text Summarizer</h1>
+        <!-- make the span center -->
+        <span style="text-align: center;">
             <form action="/summarize" method="post">
-                <textarea name="text" rows="10" cols="50"></textarea>
+                <span>
+                    <h2>Text to be summarized</h2>
+                    <textarea name="text1" rows="12" cols="80"></textarea>
+                </span>
+                <br><br>
+                <span>
+                    <h2>Text to be compared</h2>
+                    <textarea name="text2" rows="12" cols="80"></textarea>
+                </span>
                 <br>
+                <span>
+                    <h2>Select the input type:</h2>
+                    <input type="radio" id="text" value="1" name="option" checked required >
+                    <label for="text">Pure Text</label>
+                    <br>
+                    <input type="radio" id="html" name="option" value="2">
+                    <label for="html">HTML Text</label>
+                </span>
+                <br><br>
                 <input type="submit" value="Summarize">
             </form>
             
