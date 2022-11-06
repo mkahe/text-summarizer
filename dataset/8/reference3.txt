@@ -1,0 +1,10 @@
+India had 11.1 million vacant housing units in 2011 comprising 12.4% of its urban housing stock.
+Cities in Mexico and China also have high vacancies. 
+We argue that weak contract enforcement, an acute problem in India, adversely affects housing markets.
+Such a move, we estimate, would also reduce India’s housing shortage. 
+This paper adds to earlier work done by Malpezzi and Tewari, who look at the relationship between state level urban vacancy rates in 1981 and rent control regulations in India. 
+A lot has changed in the past few decades in housing markets in India.
+In particular, vacancy rates increased from 8% in 1981 to 12% in 2011 and many states reformed their rent control laws post 1991.
+Moreover, Malpezzi and Tewari report correlations and multivariate regressions, whereas we perform panel regressions.
+We address possible endogeneity concerns using an instrument – distance of a district to the High Court.
+Section 2 is a broad overview of the housing market in India, with a focus on rental and vacant housing. 

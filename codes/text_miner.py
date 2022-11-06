@@ -207,8 +207,9 @@ def get_summary(sentences):
         score = cosine_similarity([sentence_embedding_n[0]],sentence_embedding_n[1:])
         scores_s1.append(score[0][0])
 
+    summary_sentence_count = 10
     scores_s1[0] = 1000
-    for i in range(1, 10):
+    for i in range(1, summary_sentence_count):
         # find the minimum score and its index
         min_score = min(scores_s1)
         min_index = scores_s1.index(min_score)
@@ -248,7 +249,8 @@ def get_rouge_score(candidate, reference):
 
 def main():
     # read a text file
-    text = read_file('dataset/Lapland.txt')
+    text = read_file('dataset/1/candidate.txt')
+    reference = read_file('dataset/1/reference.txt')
     # split text into sentences
     sentences = split_html_text(text)
     print(sentences[1].named_entities)
@@ -264,24 +266,59 @@ def main():
     for i in range(len(sentences)):
         sentences[i].weight = sentence_tfidf[i] + 2 * ne_score_tfidf[i]
     
-    # get_summary(sentences)
+    summary = get_summary(sentences)
 
-    sen1 = """ The area of Lapland was split between two counties of the Swedish Realm from 1634 to 1809. The northern and western
-    areas were part of Västerbotten County, while the southern areas were part of Ostrobothnia
-    County. The northern and western areas were transferred in 1809 to Oulu County, which
-    became Oulu Province. Under the royalist constitution of Finland during the first half of 1918, Lapland was to
-    become a Grand Principality and part of the inheritance of the proposed king of Finland. Lapland Province was
-    separated from Oulu Province in 1938."""
+    # sen1 = """ The area of Lapland was split between two counties of the Swedish Realm from 1634 to 1809. The northern and western
+    # areas were part of Västerbotten County, while the southern areas were part of Ostrobothnia
+    # County. The northern and western areas were transferred in 1809 to Oulu County, which
+    # became Oulu Province. Under the royalist constitution of Finland during the first half of 1918, Lapland was to
+    # become a Grand Principality and part of the inheritance of the proposed king of Finland. Lapland Province was
+    # separated from Oulu Province in 1938."""
 
-    sen1_sw = remove_stopwords(sen1)
+    # sen1_sw = remove_stopwords(sen1)
 
-    sen2 = "The area of the Lapland region is 100 367 km which consists of 92 667 km of dry land 6 316 km fresh water and 1 383 km of sea water. The very first snowflakes fall to the ground in late August or early September over the higher peaks. After Finland made a separate peace with the Soviet Union in 1944 the Soviet Union demanded that Finland expel the German army from its soil "
-    sen2_sw = remove_stopwords(sen2)
+    # sen2 = "The area of the Lapland region is 100 367 km which consists of 92 667 km of dry land 6 316 km fresh water and 1 383 km of sea water. The very first snowflakes fall to the ground in late August or early September over the higher peaks. After Finland made a separate peace with the Soviet Union in 1944 the Soviet Union demanded that Finland expel the German army from its soil "
+    # sen2_sw = remove_stopwords(sen2)
+    # print(get_rouge_score(sen1_sw, sen2_sw))
 
-    print(get_rouge_score(sen1, sen2))
+    # for i, j in summary:
+    #     print("sentence: ", j, "TEXT: ", i.text)
 
-    print(get_rouge_score(sen1_sw, sen2_sw))
+    summary_as_text = '. '.join([i[0].text for i in summary])
+    print(summary_as_text)
+    print(get_rouge_score(summary_as_text, reference))
 
+    print("***************")
+
+    luhun1 = """
+    From the outset of the COVID-19 pandemic, news coverage and policymaking have prominently featured concerns that government-mandated restrictions on economic activity and personal mobility might increase domestic violence (DV).1 This attention to DV is well-motivated because of its high social and economic costs (Garcia- Moreno & Watts, 2011) and because stress, economic disruption, and social isolation are established predictors of DV (Berg & Tertilt, 2012; Bright et al., 2020). Despite the initial set of papers yielding mixed results, the claim that shutdowns increase DV incidence has been presented as an established fact in media coverage and in political debates about pandemic restrictions (e.g., Biggs, 2020). This paper is motivated by the observation that the empirical studies finding increases in DV in US cities examine DV service calls as their exclusive (Leslie & Wilson, 2020; McCrary & Sanga, 2021; Nix & Richards, 2021) or primary (Hsu & Henke, 2021) outcome measure. Papers that examine DV crime rates are more likely to find decreases in DV, particularly when they account for seasonal variation using data from prior years (Abrams, 2021; Ashby, 2020a; Bullinger et al., 2021; Miller et al., 2020).2 However, because studies of the different police outcomes have differed in their geographic coverage, it is unclear if the divergence in estimates comes from systematic differences between the two types of police data or from geographic variation in the impact of shutdowns. We address this important question by studying the 18 large, urban US police departments, serving over 14 million people, for which we were able to obtain incident-level data on both DV calls for service and DV assault crimes. We find a decrease in DV assaults but an increase in DV calls during shutdowns. We also estimate models that account for the finding in the prior literature of an increase in DV calls during the period of voluntarily lower mobility that followed the nationwide emergency declaration but pre-ceded mandated shutdowns (e.g., McCrary & Sanga, 2021). When we estimate models that also control for the pre-shutdown emergency period, we find both DV assault crimes and DV calls are lower during shutdowns, relative to the immediately preceding period. We also find no evidence that intimate partner homicides or reports of intimate partner violence in the National Crime Victimization Survey increased during shutdown months; suicides, which have been linked to DV (Stevenson & Wolfers, 2006), were lower. These results fail to provide empirical support for claims that DV increased because of pandemic shutdowns, and instead suggest that violence may have decreased.
+    """
+    print("Luhun:")
+    print(get_rouge_score(luhun1, reference))
+
+    lsa1 = """
+    From the outset of the COVID-19 pandemic, news coverage and policymaking have prominently featured concerns that government-mandated restrictions on economic activity and personal mobility might increase domestic violence (DV).1 This attention to DV is well-motivated because of its high social and economic costs (Garcia- Moreno & Watts, 2011) and because stress, economic disruption, and social isolation are established predictors of DV (Berg & Tertilt, 2012; Bright et al., 2020). Federal stimulus payments enacted in response to the pandemic also significantly lowered poverty rates, which may have reduced DV (Wheaton et al., 2021; Erten et al., 2022). As a result of these opposing factors, the effects of shutdowns on overall DV levels were theoretically ambiguous and likely to vary across populations. Determining the overall impact of shutdowns on DV requires careful empirical analysis, but results need to be produced and disseminated rapidly to contribute to ongoing debates about pandemic policy (Single Gonzalez et al., 2020). Because of this urgency, researchers from a variety of disciplines relied on readily available administrative data to assess DV incidence. Despite the initial set of papers yielding mixed results, the claim that shutdowns increase DV incidence has been presented as an established fact in media coverage and in political debates about pandemic restrictions (e.g., Biggs, 2020). This paper is motivated by the observation that the empirical studies finding increases in DV in US cities examine DV service calls as their exclusive (Leslie & Wilson, 2020; McCrary & Sanga, 2021; Nix & Richards, 2021) or primary (Hsu & Henke, 2021) outcome measure. Papers that examine DV crime rates are more likely to find decreases in DV, particularly when they account for seasonal variation using data from prior years (Abrams, 2021; Ashby, 2020a; Bullinger et al., 2021; Miller et al., 2020).2 However, because studies of the different police outcomes have differed in their geographic coverage, it is unclear if the divergence in estimates comes from systematic differences between the two types of police data or from geographic variation in the impact of shutdowns. We also estimate models that account for the finding in the prior literature of an increase in DV calls during the period of voluntarily lower mobility that followed the nationwide emergency declaration but pre-ceded mandated shutdowns (e.g., McCrary & Sanga, 2021). These results fail to provide empirical support for claims that DV increased because of pandemic shutdowns, and instead suggest that violence may have decreased.
+    """
+    print("LSA:")
+    print(get_rouge_score(lsa1, reference))
+
+    edmunson1 = """
+    From the outset of the COVID-19 pandemic, news coverage and policymaking have prominently featured concerns that government-mandated restrictions on economic activity and personal mobility might increase domestic violence (DV).1 This attention to DV is well-motivated because of its high social and economic costs (Garcia- Moreno & Watts, 2011) and because stress, economic disruption, and social isolation are established predictors of DV (Berg & Tertilt, 2012; Bright et al., 2020). Nevertheless, shutdowns were unprecedented, and they could reduce DV in some households by lowering exposure to DV triggers such as infidelity and alcohol consumption outside the home (Nemeth et al., 2012), limiting contact between non-cohabiting and former couples (Ivandic et al., 2020), and even strengthening some relationships (Sachser et al., 2021). Furthermore, increased public and private funding to support DV victims and survivors, together with in- creased media attention devoted to DV, around the time shutdowns were imposed (Bright et al., 2020) could have reduced repeated violence and escalation. Federal stimulus payments enacted in response to the pandemic also significantly lowered poverty rates, which may have reduced DV (Wheaton et al., 2021; Erten et al., 2022). As a result of these opposing factors, the effects of shutdowns on overall DV levels were theoretically ambiguous and likely to vary across populations. Determining the overall impact of shutdowns on DV requires careful empirical analysis, but results need to be produced and disseminated rapidly to contribute to ongoing debates about pandemic policy (Single Gonzalez et al., 2020). Despite the initial set of papers yielding mixed results, the claim that shutdowns increase DV incidence has been presented as an established fact in media coverage and in political debates about pandemic restrictions (e.g., Biggs, 2020). This paper is motivated by the observation that the empirical studies finding increases in DV in US cities examine DV service calls as their exclusive (Leslie & Wilson, 2020; McCrary & Sanga, 2021; Nix & Richards, 2021) or primary (Hsu & Henke, 2021) outcome measure. We address this important question by studying the 18 large, urban US police departments, serving over 14 million people, for which we were able to obtain incident-level data on both DV calls for service and DV assault crimes. These results fail to provide empirical support for claims that DV increased because of pandemic shutdowns, and instead suggest that violence may have decreased.
+    """
+    print("Edmunson:")
+    print(get_rouge_score(edmunson1, reference))
+
+    textrank1 = """
+    From the outset of the COVID-19 pandemic, news coverage and policymaking have prominently featured concerns that government-mandated restrictions on economic activity and personal mobility might increase domestic violence (DV).1 This attention to DV is well-motivated because of its high social and economic costs (Garcia- Moreno & Watts, 2011) and because stress, economic disruption, and social isolation are established predictors of DV (Berg & Tertilt, 2012; Bright et al., 2020). Nevertheless, shutdowns were unprecedented, and they could reduce DV in some households by lowering exposure to DV triggers such as infidelity and alcohol consumption outside the home (Nemeth et al., 2012), limiting contact between non-cohabiting and former couples (Ivandic et al., 2020), and even strengthening some relationships (Sachser et al., 2021). Furthermore, increased public and private funding to support DV victims and survivors, together with in- creased media attention devoted to DV, around the time shutdowns were imposed (Bright et al., 2020) could have reduced repeated violence and escalation. This paper is motivated by the observation that the empirical studies finding increases in DV in US cities examine DV service calls as their exclusive (Leslie & Wilson, 2020; McCrary & Sanga, 2021; Nix & Richards, 2021) or primary (Hsu & Henke, 2021) outcome measure. Papers that examine DV crime rates are more likely to find decreases in DV, particularly when they account for seasonal variation using data from prior years (Abrams, 2021; Ashby, 2020a; Bullinger et al., 2021; Miller et al., 2020).2 However, because studies of the different police outcomes have differed in their geographic coverage, it is unclear if the divergence in estimates comes from systematic differences between the two types of police data or from geographic variation in the impact of shutdowns. We address this important question by studying the 18 large, urban US police departments, serving over 14 million people, for which we were able to obtain incident-level data on both DV calls for service and DV assault crimes. We find a decrease in DV assaults but an increase in DV calls during shutdowns. We also estimate models that account for the finding in the prior literature of an increase in DV calls during the period of voluntarily lower mobility that followed the nationwide emergency declaration but pre-ceded mandated shutdowns (e.g., McCrary & Sanga, 2021). When we estimate models that also control for the pre-shutdown emergency period, we find both DV assault crimes and DV calls are lower during shutdowns, relative to the immediately preceding period. We also find no evidence that intimate partner homicides or reports of intimate partner violence in the National Crime Victimization Survey increased during shutdown months; suicides, which have been linked to DV (Stevenson & Wolfers, 2006), were lower.
+    """
+    print("Textrank:")
+    print(get_rouge_score(textrank1, reference))
+
+    lexrank1 = """
+    From the outset of the COVID-19 pandemic, news coverage and policymaking have prominently featured concerns that government-mandated restrictions on economic activity and personal mobility might increase domestic violence (DV).1 This attention to DV is well-motivated because of its high social and economic costs (Garcia- Moreno & Watts, 2011) and because stress, economic disruption, and social isolation are established predictors of DV (Berg & Tertilt, 2012; Bright et al., 2020). Nevertheless, shutdowns were unprecedented, and they could reduce DV in some households by lowering exposure to DV triggers such as infidelity and alcohol consumption outside the home (Nemeth et al., 2012), limiting contact between non-cohabiting and former couples (Ivandic et al., 2020), and even strengthening some relationships (Sachser et al., 2021). Federal stimulus payments enacted in response to the pandemic also significantly lowered poverty rates, which may have reduced DV (Wheaton et al., 2021; Erten et al., 2022). As a result of these opposing factors, the effects of shutdowns on overall DV levels were theoretically ambiguous and likely to vary across populations. Because of this urgency, researchers from a variety of disciplines relied on readily available administrative data to assess DV incidence. Papers that examine DV crime rates are more likely to find decreases in DV, particularly when they account for seasonal variation using data from prior years (Abrams, 2021; Ashby, 2020a; Bullinger et al., 2021; Miller et al., 2020).2 However, because studies of the different police outcomes have differed in their geographic coverage, it is unclear if the divergence in estimates comes from systematic differences between the two types of police data or from geographic variation in the impact of shutdowns. We address this important question by studying the 18 large, urban US police departments, serving over 14 million people, for which we were able to obtain incident-level data on both DV calls for service and DV assault crimes. We find a decrease in DV assaults but an increase in DV calls during shutdowns. We also estimate models that account for the finding in the prior literature of an increase in DV calls during the period of voluntarily lower mobility that followed the nationwide emergency declaration but pre-ceded mandated shutdowns (e.g., McCrary & Sanga, 2021). These results fail to provide empirical support for claims that DV increased because of pandemic shutdowns, and instead suggest that violence may have decreased.
+    """
+    print("LexRank:")
+    print(get_rouge_score(lexrank1, reference))
 
 def init():
     text_list = ["this is a test", "test is a test", "this is a test"]

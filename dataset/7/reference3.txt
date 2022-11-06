@@ -1,0 +1,8 @@
+From the outset of the COVID-19 pandemic, news coverage and policymaking have prominently featured concerns that governmentmandated restrictions on economic activity and personal mobility might increase domestic violence (DV).
+This attention to DV is wellmotivated because of its high social and economic costs and because stress, economic disruption and social isolation are established predictors of DV.
+n the US, the main source has been real-time data published by individual police departments that provide one or two key measures of DV: calls for service and criminal incident reports.
+This paper is motivated by the observation that the empirical studies finding increases in DV in US cities examine DV service calls as their exclusive or primary outcome measure. 
+Papers that examine DV crime rates are more likely to find decreases in DV, particularly when they account for seasonal variation using data from prior years.
+We address this important question by studying the 18 large, urban US police departments, serving over 14 million people, for which we were able to obtain incident-level data on both DV calls for service and DV assault crimes.
+We empirically estimate the impacts of shutdowns by comparing the differences in changes in each of our outcomes between the initial pandemic shutdown period in 2020 and the earlier part of the year and the changes between the same time periods in 2019.
+We also find no evidence that intimate partner homicides or reports of intimate partner violence in the National Crime Victimization Survey increased during shutdown months; suicides, which have been linked to DV, were lower. 

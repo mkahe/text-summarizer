@@ -1,0 +1,10 @@
+This paper advances a comparative and macroscopic analysis of regional voting patterns in African countries.
+Using comparative and longitudinal data, and electoral geography methods little used in African studies, we document the existence of persistent regional electoral blocs in three countries that are often taken as exemplars of fluidity, rather than stability, in electoral voting patterns – Kenya, Zambia, and Malawi.
+Most studies of electoral politics in African countries since the 1990s have been focused either on individual-level voter (or politician) behavior within localities, or on national-level political systems. 
+Using a spatial analysis of voting outcomes in presidential elections in Kenya, Zambia, and Malawi since 1990, we identify multiethnic regional voting blocs that persist across elections in each country.
+Although the present paper does not test a causal theory of bloc etiology, we argue that the observed patterns of spatial clustering and cleavage are isomorphic to those identified by Lipset and Rokkan in their classic study of core-periphery oppositions that can emerge in the course of state building and national economic development.
+In Lipset & Rokkan’s theorization, territorial oppositions arise from spatial-sectoral competition, persistent regional economic and social inequalities, and regional tensions associated with processes of national economic integration.
+Our empirical results are consistent with such a reading for the three African countries we study. 
+The main contribution of the paper is to connect the analysis of African elections to broader theories of regional cleavage in national politics.
+As far as we know, this is the first spatial analysis of geographic voting patterns in African countries that combines electoral data both cross-nationally and over-time. 
+Part IV turns to political economy works on territorial politics to argue that electoral cleavages in Kenya, Zambia, and Malawi can be understood as expressions of coreperiphery oppositions that emerge in the course of national economic development.
