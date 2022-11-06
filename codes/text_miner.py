@@ -60,11 +60,13 @@ def split_text(text):
     pattern = re.compile(r'.*?\.', re.DOTALL)
     matches = pattern.finditer(text)
     sentences = []
-    for i in range(len(matches)):
-        match = matches[i]
-        text = match.group(1)
-        sentence_object = Sentence(text, None, 0)
+    i = 0
+    for match in matches:
+        print(match , match.group())
+        text = match.group(0)
+        sentence_object = Sentence(text, None, i)
         sentences.append(sentence_object)
+        i += 1
     return sentences
 
 
@@ -279,7 +281,22 @@ def main():
     print(get_rouge_score(sen1, sen2))
 
     print(get_rouge_score(sen1_sw, sen2_sw))
+
+
+def init():
+    text_list = ["this is a test", "test is a test", "this is a test"]
+    get_score_based_on_tfidf(text_list)
+
     
 
 if __name__ == "__main__":
-    main()
+    # main()
+    import sys
+    # read input arguments
+    command = sys.argv[1]
+    if command == "--init":
+        init()
+    elif command == "--main":
+        main()
+    else:
+        print("Invalid command")
